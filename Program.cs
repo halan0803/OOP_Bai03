@@ -155,12 +155,9 @@ class Program
         // ==========================================
 
         Console.WriteLine("\n--- Test 9 ---");
+        Console.WriteLine("Danh sách thành viên bằng lời gọi đa hình:");
 
-        Employee polymorphicEmployee = engineer2;
-
-        // Biến có kiểu Employee nhưng đối tượng thực tế
-        // là SoftwareEngineer.
-        polymorphicEmployee.DisplayInfo();
+        team1.DisplayTeam();
 
 
         // ==========================================
@@ -239,12 +236,19 @@ class Program
         // Hủy team2 nhưng Employee vẫn tồn tại
         // ==========================================
 
-        Console.WriteLine("\n--- Test 14 + 15 ---");
+        Console.WriteLine("\n--- Test 14 ---");
 
         CreateAndDestroyTeam(employee2);
 
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+
+        Console.WriteLine("ProjectTeam thứ hai đã được thu hồi.");
+
+        Console.WriteLine("\n--- Test 15 ---");
+
         Console.WriteLine(
-            "Sau khi team2 bị hủy, employee2 vẫn tồn tại."
+            "Kiểm tra nhân sự vẫn tồn tại sau khi ProjectTeam bị thu hồi:"
         );
 
         employee2.DisplayInfo();
@@ -255,17 +259,14 @@ class Program
     // Tạo một ProjectTeam trong block cục bộ
     static void CreateAndDestroyTeam(Employee employee)
     {
-        ProjectTeam localTeam =
-            new ProjectTeam(
-                "P03",
-                "Temporary Project"
-            );
+       ProjectTeam team2 = new ProjectTeam(
+           "P02",
+           "Temporary Project"
+       );
 
-        localTeam.AddMember(employee);
+       team2.AddMember(employee);
 
-        localTeam.DisplayTeam();
-
-        // Khi kết thúc method, localTeam không còn được tham chiếu
-        // GC có thể thu hồi ProjectTeam sau đó
+       Console.WriteLine("Nhóm thứ hai:");
+       team2.DisplayTeam();
     }
 }
