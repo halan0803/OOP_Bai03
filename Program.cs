@@ -240,9 +240,6 @@ class Program
 
         CreateAndDestroyTeam(employee2);
 
-        GC.Collect();
-        GC.WaitForPendingFinalizers();
-
         Console.WriteLine("ProjectTeam thứ hai đã được thu hồi.");
 
         Console.WriteLine("\n--- Test 15 ---");
