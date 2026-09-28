@@ -155,7 +155,7 @@ class Program
         // ==========================================
 
         Console.WriteLine("\n--- Test 9 ---");
-        Console.WriteLine("Danh sách thành viên bằng lời gọi đa hình:");
+        Console.WriteLine("Display team using polymorphism:");
 
         team1.DisplayTeam();
 
@@ -240,12 +240,12 @@ class Program
 
         CreateAndDestroyTeam(employee2);
 
-        Console.WriteLine("ProjectTeam thứ hai đã được thu hồi.");
+        Console.WriteLine("Second ProjectTeam has been destroyed.");
 
         Console.WriteLine("\n--- Test 15 ---");
 
         Console.WriteLine(
-            "Kiểm tra nhân sự vẫn tồn tại sau khi ProjectTeam bị thu hồi:"
+            "Checking if employee still exists after ProjectTeam is destroyed:"
         );
 
         employee2.DisplayInfo();
@@ -263,7 +263,7 @@ class Program
 
        team2.AddMember(employee);
 
-       Console.WriteLine("Nhóm thứ hai:");
+       Console.WriteLine("Second team:");
        team2.DisplayTeam();
     }
 }
